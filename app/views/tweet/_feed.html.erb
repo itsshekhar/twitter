@@ -1,0 +1,51 @@
+<div class="column is-half">
+    <article class="media box">
+    <figure class="media-left">
+        <p class="image is-64x64">
+            <img src="https://bulma.io/images/placeholders/64x64.png">
+        </p>
+    </figure>
+    <div class="media-content">
+    </div>
+    </article>
+
+</div>
+
+<%@tweet.each do |t|%>
+<div class="box">
+    <article class="media">
+        <div class="media-left">
+            <figure class="image is-64x64">
+                  <img src="https://bulma.io/images/placeholders/64x64.png">
+            </figure>
+        </div>
+
+
+        <div class="media-content">
+            <div class="content">
+                <strong>Shekhar</strong><br/>
+                <small>@itsshekhar</small><br/>
+                <p><%=t.body%></p>
+            </div>
+
+
+            <nav class="level">
+                <div class="level-left is-mobile">
+                    <%= link_to t ,class: "level-item" do%>
+                        <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+                    <%end%>
+                   
+                    <%=link_to edit_tweet_path(t), class: "level-item" do%>
+                        <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                    <%end%>
+                    
+                     <%=link_to tweet_path(t) ,method: :delete,data: {confirm:"are your sure want to delete this tweet?"} do %>
+                            <span class="icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                    <%end%>
+
+                </div>
+            </nav>
+        </div>
+    </article>
+<div>
+<%end%>
