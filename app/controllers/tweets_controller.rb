@@ -1,9 +1,12 @@
-class TweetController < ApplicationController
+class TweetsController < ApplicationController
     def index
-        @tweet=Tweet.all
+        @tweets=Tweet.all
+        @tweet=Tweet.new()
+
     end
     
     def new
+        @tweet=Tweet.new
 
     end
     
@@ -19,5 +22,7 @@ class TweetController < ApplicationController
         
     end
    
+
+end
 
 end
