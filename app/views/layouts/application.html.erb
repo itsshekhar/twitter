@@ -19,11 +19,13 @@
     <% if flash[:notice]%>
       <div class="notification is-primary global-notification">
        <p class="notice"><%= notice %></p>
+
       </div>
     <%end%>
     <%if flash[:alert]%>
       <div class="notification is-danger global-notification">
-      <p class="alert"> <%=alert%></p>
+      <p class="alert"><%= alert %></p>
+
       </div>
     <%end%>
 
@@ -46,7 +48,8 @@
             <p class="control">
               <%=link_to "new Tweet",new_tweet_path , class: "button is_info is-inverted"%>
             </p>
-            <p class="control">Sign Up</p>
+            <%# <%=link_to "sign_out", destroy_user_session_path%> 
+             <%=link_to "sign out",new_tweet_path , class: "button is_info is-inverted"%>
             </div>
           </div>
         </div>
