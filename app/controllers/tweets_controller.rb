@@ -37,7 +37,7 @@ class TweetsController < ApplicationController
          puts params
          puts"-------------------------------"
          if @tweet.update(tweet_params)
-           redirect_to tweet_url(@tweet[:id])
+           redirect_to tweet_url(params[:id])
          else
            render :edit, status: :unprocessable_entity
          end
@@ -46,9 +46,16 @@ class TweetsController < ApplicationController
     def destroy
          @tweet = Tweet.find(params[:id])
          @tweet.destroy
-         redirect_to tweet_index_path, status: :see_other
+         redirect_to root_path, status: :see_other
     end
          
+    
+
+    def set_tweet
+     @tweet= Tweet.find(params[:id])
+    end
+
+
     private
     def tweet_params  
         p"========================"

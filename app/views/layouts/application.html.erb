@@ -11,14 +11,14 @@
 "%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%# <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awsome.min.css" %>
+       <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awsome.min.css" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <% if flash[:notice]%>
       <div class="notification is-primary global-notification">
-       <p class="notice"><%= notice %></p>
+       <p class="notice"><%=notice %></p>
 
       </div>
     <%end%>
@@ -48,8 +48,30 @@
             <p class="control">
               <%=link_to "new Tweet",new_tweet_path , class: "button is_info is-inverted"%>
             </p>
+
+            <% if user_signed_in? %>
+            <p class="control">
+              <%= link_to current_user.name ,edit_user_registration_path, class: "buttom is-info is-inverted"%>
+            </p>
+            
+            <%= link_to "Logout", destroy_user_session_path,data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure want to signout?'},
+                             class: "button is-info"%>
+            </p>
+            <%else%>
+
+            <p class="control">
+              <%=notice%>
+              <%= link_to "Sign In" , new_user_session_path,class:"button  is-info"%>
+
+              </p>
+
+            <p class="control">
+              <%= link_to "Sign Up" , new_user_registration_path ,class:"button  is-info"%>
+              </p>
+              <%end%>
+             
             <%# <%=link_to "sign_out", destroy_user_session_path%> 
-             <%=link_to "sign out",new_tweet_path , class: "button is_info is-inverted"%>
+           
             </div>
           </div>
         </div>
